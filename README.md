@@ -52,6 +52,51 @@ In this project, we need an application that gives a summary of a simulated matc
     	"The match ended 61 - 61 and went to overtime"
     ]
 
+    const macOzeti = (evSahibiTakim, deplasmanTakimi) => {
+  /* kodlar buraya */
+
+  const takimSkoru = (interval) => {
+    return Math.floor(Math.random * interval + 10);
+  };
+
+  let score = {
+    evSahibiTakim: 0,
+    deplasmanTakim: 0,
+  };
+
+  let ozet = [];
+  let metin = '';
+
+  for (let i = 1; i <= 4; i++) {
+    score.evSahibiTakim += takimSkoru(16);
+    score.deplasmanTakim += takimSkoru(16);
+
+    metin = `${i}. Periyot: ${evSahibiTakim} ${score.deplasmanTakim} - ${deplasmanTakimi} ${score.deplasmanTakim}`;
+
+    ozet.push(metin);
+  }
+
+  let metinSonuc;
+  if (score.evSahibiTakim === score.deplasmanTakim) {
+    metinSonuc = `Maç ${score.evSahibiTakim} -${score.deplasmanTakim} ile uzatmalara gitti`;
+  } else {
+    metinSonuc = `Maç Sonucu: ${evSahibiTakim} ${score.evSahibiTakim}-${score.deplasmanTakim}`;
+    metinSonuc = `${metin} ${
+      score.evSahibiTakim > score.deplasmanTakim ? 'kazandı' : 'kaybetti'
+    }`;
+
+    ozet.push(metinSonuc);
+    return ozet;
+  }
+};
+
+/* Bu satırdan sonraki satırları silmeyin! */
+module.exports = macOzeti;
+
+
+
+    
+
 
 
 
